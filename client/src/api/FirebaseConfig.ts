@@ -13,9 +13,14 @@ const firebaseConfig = {
   storageBucket: "real-time-chat-app-52988.appspot.com",
   messagingSenderId: "1067159801973",
   appId: "1:1067159801973:web:7e9fb49c272fc3460e283c",
-  measurementId: "G-WEREWZKTL7"
+  measurementId: "G-WEREWZKTL7",
+  databaseURL: "https://real-time-chat-app-52988-default-rtdb.asia-southeast1.firebasedatabase.app",
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+const intializeFirebase = () => {
+    const app = initializeApp(firebaseConfig);
+    return app;
+}
+
+export default intializeFirebase;

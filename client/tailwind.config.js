@@ -5,7 +5,11 @@ module.exports = {
     "./src/*.{js,jsx,ts,tsx}"
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'chat-pattern': "url('/src/ui/ChatBg.jpeg')",
+      }
+    },
   },
   plugins: [],
 }

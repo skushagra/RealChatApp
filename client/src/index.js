@@ -4,13 +4,18 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ThemeProvider } from './hooks/Theme/Theme' ;
-
+import { UserProvider } from './hooks/User/User';
+import { ThreadsProvider } from './hooks/Thread/Thread';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <ThemeProvider>
-        <App />
+        <UserProvider>
+            <ThreadsProvider>
+                <App />
+            </ThreadsProvider>
+        </UserProvider>
     </ThemeProvider>
   </React.StrictMode>
 );

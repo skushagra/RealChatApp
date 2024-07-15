@@ -1,17 +1,14 @@
 
-export default async function Login(username: string, password: string) : Promise<string> {
+export default async function createThread(threadData: any) : Promise<string> {
 
     const API = process.env.REACT_APP_BACKEND_URL;
 
-    const authToken = await fetch(API+"/auth/login", {
+    const response = await fetch(API+"/thread/create", {
         method: "POST",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-            email: username,
-            password: password
-        })
+        body: JSON.stringify(threadData)
     }).then(res => res.json()).then(data => {
         if (data.error) {
             console.log(data.error);
@@ -23,5 +20,5 @@ export default async function Login(username: string, password: string) : Promis
         console.log(err);
     });
 
-    return authToken;
+    return response;
 }

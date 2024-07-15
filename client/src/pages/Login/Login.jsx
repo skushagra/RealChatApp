@@ -1,17 +1,31 @@
 import { useTheme } from "../../hooks/Theme/Theme";
+import { useUser } from "../../hooks/User/User";
+import { useState } from "react";
 import login from "../../api/login.ts";
 
 export default function Login() {
 
     const {theme, toggleTheme} = useTheme();
-
+    const {user, handleSetUser} = useUser();
+    const [errorMessage, setErrorMessage] = useState("");
     const handleLogin = async (event) => {
         event.preventDefault();
         console.log("Logging in...");
         const email = event.target[0].value;
         const password = event.target[1].value;
         const response = await login(email, password);
-        console.log(response);
+        if(response.user) {
+            handleSetUser(response.user, email);
+            window.location.href = "/";
+        } else {
+            setErrorMessage("Invalid email or password");
+            setTimeout(() => {
+                setErrorMessage("");
+            }
+            , 3000);
+        }
+        event.target[0].value = "";
+        event.target[1].value = "";
     }
 
     return (
@@ -19,6 +33,12 @@ export default function Login() {
             <div className="w-1/2 h-full ">
                 {/* <img src="https://i.postimg.cc/TYxQxbqR/pexels-ollivves-931007.jpg" alt="" className="" /> */}
             </div>
+            {
+                errorMessage &&
+                <div className="w-[25%] h-[60px fixed bottom-5 right-5 rounded-lg flex items-center pl-5 text-white" style={{background: errorMessage ? "red" : "green"}}>
+                    {errorMessage}
+                </div>
+            }
             <div className="w-1/2 h-full flex justify-center items-center">
                 <form action="" className="w-full" onSubmit={handleLogin}>
                     <div className="flex flex-col items-center gap-5">
