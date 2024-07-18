@@ -32,3 +32,33 @@ cd server
 npm install
 ```
 6. Run the client and server independently usign command `npm start` in `client` and `server` folders simultaneously.
+
+# Live App URL
+
+### The backend is hosted on render and can take some time to get started, it can delay requests by a few minutes.
+
+```
+https://shark-app-9567j.ondigitalocean.app/
+
+```
+Use the following login credentials for accessing the apps
+
+User 1
+
+```
+email: kushagra.rigel@gmail.com
+password: abc123
+```
+
+User 2
+
+```
+email: rudra@abc.com
+password: abc123
+```
+
+Note
+```
+For a live backend
+GET https://chatappvideoverse.onrender.com/auth/login will return *Hello World*
+```
